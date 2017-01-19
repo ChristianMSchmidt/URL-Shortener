@@ -1,6 +1,6 @@
 "use strict";
 const mongo = require("mongodb").MongoClient;
-const db_url = require("./data.js").url;
+const db_url = process.env.accessKey || require("./data.js").url;
 
 let database = null;
 let link_coll = null;
@@ -15,7 +15,7 @@ const rndmKey = function (url,adder) {
     const x = from.length;
         
     //  Now push <length> random chars from <from> to the shorthand
-    let sh = "";
+    let sh = "https://shortthis.herokuapp.com/";
     while(length--) sh += from[Math.floor(Math.random() * x)];
     
     // Check if we somehow created an already existing shorthand
