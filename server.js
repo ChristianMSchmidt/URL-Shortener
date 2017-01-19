@@ -15,7 +15,7 @@ app.get(/^\/new\//, function(req,res) {
 
 app.get("/:shorthand", function(req,res) {
     return handleShort(req.params.shorthand).then(
-        data => res.status(200).send(data), 
+        data => res.redirect(302, data.originalURL), 
         err  => res.status(404).send({ERROR: err.message})
     );
 });
